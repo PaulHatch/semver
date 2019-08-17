@@ -53,6 +53,7 @@ if [ -z "$RESULT_TYPE" ] ; then
     echo "                     full    - the next version including build number"
     echo "                     release - the full version in form 1.0.0+0"
     echo "                     preview - the preview version 1.0.0-preview1"
+    echo "                     branch  - name of next release branch"
     echo "                     info    - displays all version"
     echo " -m --minor       Sets minor version keyword, default is [MINOR]"
     echo " -M --Major       Sets major version keyword, default is [MAJOR]"
@@ -113,19 +114,22 @@ fi
 
 case $RESULT_TYPE in
   "last")
-    echo ${TAG}
+    echo "${TAG}"
     ;;
   "next")
-    echo ${NEXT}
+    echo "${NEXT}"
     ;;
   "full")
-    echo ${NEXT}.${REV}
+    echo "${NEXT}.${REV}"
     ;;
   "release")
-    echo $TAG+$RELEASE_FIXES
+    echo "$TAG+$RELEASE_FIXES"
     ;;
   "preview")
-    echo ${NEXT}-${PREVIEW_PREFIX}${REV}
+    echo "${NEXT}-${PREVIEW_PREFIX}${REV}"
+    ;;
+  "branch")
+    echo "${BRANCH_FOLDER}/${NEXT}"
     ;;
   *)
     echo "Version Information"
