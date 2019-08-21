@@ -3,7 +3,7 @@
 declare BRANCH_FOLDER="release"
 declare RESULT_TYPE=""
 declare PREVIEW_PREFIX="preview"
-declare ROOT_BRANCH="master"
+declare ROOT_BRANCH="HEAD"
 
 declare MAJOR_KEYWORD="[MAJOR]"
 declare MINOR_KEYWORD="[FEATURE]"
@@ -63,7 +63,7 @@ if [ -z "$RESULT_TYPE" ] ; then
 fi
 
 declare TAG
-declare BRANCH=$(git branch --list --format='%(refname:short)' --sort='-*committerdate' ${BRANCH_FOLDER}/* | head -1)
+declare BRANCH=$(git branch --list --format='%(refname:short)' --merged ${ROOT_BRANCH} --sort='-*committerdate' ${BRANCH_FOLDER}/* | head -1)
 
 if [ -z "$BRANCH" ] ; then
     BRANCH=${ROOT_BRANCH}
