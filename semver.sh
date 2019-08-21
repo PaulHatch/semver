@@ -6,7 +6,7 @@ declare PREVIEW_PREFIX="preview"
 declare ROOT_BRANCH="HEAD"
 
 declare MAJOR_KEYWORD="[MAJOR]"
-declare MINOR_KEYWORD="[FEATURE]"
+declare MINOR_KEYWORD="[MINOR]"
 
 while (( "$#" )); do
   case "$1" in
